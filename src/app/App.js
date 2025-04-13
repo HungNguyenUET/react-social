@@ -34,8 +34,10 @@ class App extends Component {
   }
 
   loadCurrentlyLoggedInUser() {
+    console.log("loadCurrentlyLoggedInUser")
     getCurrentUser()
     .then(response => {
+      console.log("loadCurrentlyLoggedInUser|authenticated|true")
       this.setState({
         currentUser: response,
         authenticated: true,

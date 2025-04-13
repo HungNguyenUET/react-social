@@ -4,7 +4,8 @@ import { Redirect } from 'react-router-dom'
 
 class OAuth2RedirectHandler extends Component {
     getUrlParameter(name) {
-        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        console.log("getUrlParameter|name:", name)
+        name = name.replace(/[\\[]/, '\\[').replace(/[\\]]/, '\\]');
         var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
 
         var results = regex.exec(this.props.location.search);
@@ -16,12 +17,14 @@ class OAuth2RedirectHandler extends Component {
         const error = this.getUrlParameter('error');
 
         if(token) {
+            console.log("OAuth2RedirectHandler|token: ", token)
             localStorage.setItem(ACCESS_TOKEN, token);
             return <Redirect to={{
                 pathname: "/profile",
                 state: { from: this.props.location }
             }}/>; 
         } else {
+            console.log("OAuth2RedirectHandler login")
             return <Redirect to={{
                 pathname: "/login",
                 state: { 

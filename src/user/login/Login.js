@@ -99,11 +99,11 @@ class LoginForm extends Component {
 
             this.setState({ isLoggedIn: true });
 
-            // Alert.success("You're successfully logged in!");
-            // this.props.history.push("/profile");
-            // return <Redirect to={{
-            //     pathname: "/signup",
-            // }}/>; 
+             Alert.success("You're successfully logged in!");
+             this.props.history.push("/profile");
+             return <Redirect to={{
+                 pathname: "/signup",
+             }}/>;
         }).catch(error => {
             Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');
         });
